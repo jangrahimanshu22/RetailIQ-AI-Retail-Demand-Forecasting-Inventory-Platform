@@ -1,0 +1,44 @@
+# Place this file at .github/workflows/ci-cd.yml in your GitHub repo
+name: CI/CD - Retail Demand Forecast
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate sample data
+        run: python data/generate_dataset.py
+
+      - name: Run preprocessing smoke test
+        run: python preprocessing/clean_data.py
+
+      - name: Run feature engineering smoke test
+        run: python feature_engineering/build_features.py
+
+      - name: Run model training smoke test
+        run: python training/train_models.py
+
+      - name: Build Docker image
+        run: docker build -t retail-demand-forecast:latest .
+
+      # Optional deployment step (uncomment and configure secrets)
+      # - name: Push to Docker Hub
+      #   run: |
+      #     echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USER }}" --password-stdin
+      #     docker tag retail-demand-forecast:latest myuser/retail-demand-forecast:latest
+      #     docker push myuser/retail-demand-forecast:latest

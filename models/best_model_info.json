@@ -1,0 +1,13 @@
+{
+  "best_model": "LightGBM",
+  "metrics": {
+    "Model": "LightGBM",
+    "MAE": 0.45,
+    "RMSE": 0.786,
+    "MSE": 0.618,
+    "MAPE": 1.52,
+    "R2": 0.9992,
+    "CV_RMSE": 1.736,
+    "TrainTime_s": 1.07
+  }
+}

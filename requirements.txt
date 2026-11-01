@@ -1,0 +1,22 @@
+pandas==3.1.0
+numpy==2.5.4
+scikit-learn==1.9.1
+xgboost==3.4.1
+lightgbm==4.7.0
+streamlit==1.66.1
+plotly==7.1.0
+matplotlib==3.11.2
+seaborn==0.13.2
+joblib==1.6.0
+mysql-connector-python==26.10.0
+
+# Optional / advanced extensions (see forecasting/README_advanced_models.md)
+# catboost==1.2.5
+# prophet==1.1.5
+# statsmodels==0.14.2
+# tensorflow==2.16.1
+# shap==0.45.1
+# optuna==3.6.1
+# mlflow==2.14.1
+# fastapi==0.111.0
+# uvicorn==0.30.1
